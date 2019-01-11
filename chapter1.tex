@@ -142,7 +142,7 @@
 					= \lambda_1[(a_{ij} + b_{ij})] && \text{def. of matrix addition} \\
 					= [\lambda_1(a_{ij} + b_{ij})] && \text{def. of scalar multiplication} \\
 					= [(\lambda_1a_{ij} + \lambda_1b_{ij})] && \text{distributive property of scalars} \\
-					= [\lambda_1a_{ij}] + [\lambda_1b_{ij}] && \text{def. of matrix addition}
+					= [\lambda_1a_{ij}] + [\lambda_1b_{ij}] && \text{def. of matrix addition} \\
 					= \lambda_1[a_{ij}] + \lambda_1[b_{ij}] && \text{def. of scalar multiplication}
 					= \lambda_1A + \lambda_1B
 				\end{align*}
@@ -168,5 +168,100 @@
 			\end{enumerate}
 		\end{proof}
 	\end{shaded}
+
+	\subsection{Matrix Multiplication}
+		A single system of two linear equations in two unknowns is 
+		\begin{align*}
+			2x + 3y = 10 \\
+			4x + 5y = 20
+		\end{align*}
+		
+		Combining all the coefficients of the variables on the left of each equation into a \textit{coefficient matrix}, all the variables into a column matrix of variables; and the constants on the right of each equation into another column matrix, we separate the matrix system
+		\begin{center}
+			$\begin{bmatrix}
+			2 & 3 \\ 4 & 5
+			\end{bmatrix}
+			\begin{bmatrix}
+			x \\ y
+			\end{bmatrix}
+			= \begin{bmatrix}
+			10 \\ 20
+			\end{bmatrix}$
+		\end{center}
+		
+		We want to define matrix multiplication so that 
+		\begin{center}
+			$\begin{bmatrix}
+			2 & 3 \\ 4 & 5
+			\end{bmatrix}
+			\begin{bmatrix}
+			x \\ y
+			\end{bmatrix}
+			=\begin{bmatrix}
+			(2x + 3y) \\ (4x + 5y)
+			\end{bmatrix}
+			= \begin{bmatrix}
+			10 \\ 20
+			\end{bmatrix}$
+		\end{center}
+	
+		We shall define the product $AB$ of two matrices $A$ and $B$ when the number of columns of $A$ is equal to the number of rows of $B$, and the result will be a matrix having the same number of rows as A and the same number of columns as B.
+		
+		When the product $AB$ is considered, $A$ is said to \textit{premultiply} $B$, while $B$ is said to \textit{postmultiply} $A$.
+		
+		To calculate the $i-j$ element of $AB$, when the multiplication is defined, multiply the elements in the $i$th row of $A$ by the corresponding elements in the $j$th column of $B$ and sum the results.
+		
+		Let $AB = C = [c_{ij}]$. Then $[c_{ij}] = a_{i1}b_{1j} + a_{i2}b_{2j} + \dots + a_{ir}b_{rj} = \sum\limits_{k=1}^{r} a_{ik}b_{kj}$.
+		
+		Although matrix multiplication is not commutative, some matrix products are. Also, matrices exist for which $AB = 0$ without either $A$ or $B$ being $0$. The cancellation law also does not apply. In general, $AB = AC$ does not imply $B = C$.	
+		
+		\begin{theorem}
+			If $A, B, \land C$ have appropriate orders so that the following additions and multiplications are defined, then
+			\begin{enumerate}[label=(\alph*)]
+				\item $A(BC) = (AB) C$ \hfill (associative law of multiplication)
+				\item $A(B+C) = AB + AC$ \hfill (left distributive law)
+				\item $(B+C)A = BA + CA$ \hfill (right distributive law)
+			\end{enumerate}
+		\end{theorem}
+		
+		\begin{shaded}
+			\begin{proof}
+				\begin{enumerate}[label=(\alph*)]
+					\item Let $A = [a_{ij}]$ be an $m$x$n$ matrix, $B = [b_{ij}]$ be an $n$x$p$ matrix, and $C=[c_{ij}]$ be a $p$x$q$ matrix. Then
+					\begin{align*}
+						(AB)C = ([a_{ij}][b_{jk}])[c_{}] \\
+						= (\sum\limits_{k=1}^{r} a_{ik}b_{kj})[c_{}] \\
+						= \sum\limits_{l=1}^{p}(\sum\limits_{k=1}^{r} a_{ik}b_{kj})c_{} \\
+						= \sum\limits_{l}([ab]_{il}[c]_{}) \\
+						= [ab]_{il}[c]_{lj} \\
+						= (AB)C
+					\end{align*}
+					
+					\begin{note}
+						I got lost in the sea of subscripts, but labeled appropriately (and arbitrarily) the logic still holds.
+					\end{note}
+					
+					\item Let $A = [a_{ij}] \land B = [b_{ij}] \land C = [c_{ij}]$, where $A$ is $m$x$n$, and $B$ and $C$ are $n$x$p$. Then
+					\begin{align*}
+						A(B+C) = [a_{ij}]([b_{ij}] + [c_{ij}]) \\
+						= [a_{ij}][(b_{ij} + c_{ij})] \\
+						= \sum\limits_{k}a_{ik}(b_{kj}+c_{kj}) \\
+						= \sum\limits_{k}a_{ik}b_{kj} + a_{ik}c_{kj} \\
+						= \sum\limits_{k}a_{ik}b_{kj} + \sum\limits_{k}a_{ik}c_{kj} \\
+						= [a_{ij}][b_{ij}] + [a_{ij}][c_{ij}] \\
+						= AB + AC
+					\end{align*} 
+					
+					\item Let $A = [a_{ij}] \land B = [b_{ij}] \land C = [c_{ij}]$, where $A$ is $m$x$n$, and $B$ and $C$ are $n$x$p$. Then
+					\begin{align*}
+						(B+C)A = ([b_{ij}] + [c_{ij}])[a_{ij}] \\
+						= \sum\limits_{k}(b_{ik} + c_{ik})a_{kj} \\
+						= \sum\limits_{k}(b_{ik}a_{kj} + c_{ik})a_{kj} \\
+						= \sum\limits_{k}(b_{ik}a_{kj} + \sum\limits_{k}c_{ik})a_{kj} \\
+						= BA + BC
+					\end{align*}
+				\end{enumerate}
+			\end{proof}
+		\end{shaded}
 \end{document}
 
