@@ -169,6 +169,7 @@
 		\end{proof}
 	\end{shaded}
 
+	\pagebreak
 	\subsection{Matrix Multiplication}
 		A single system of two linear equations in two unknowns is 
 		\begin{align*}
@@ -263,5 +264,114 @@
 				\end{enumerate}
 			\end{proof}
 		\end{shaded}
+	
+	\pagebreak
+	\subsection{Special Matrices}
+		The transpose of a matrix $A$, denoted by $A^T$, is obtained by converting all the rows of $A$ into the columns of $A^T$ while preserving the ordering of the rows/columns. More formally, if $A = [a_{ij}]$ is an $n$x$p$ matrix, then the transpose of A, denoted by $A^T = [a^T_{ij}]$, is a $p$x$n$ matrix where $a^T_{ij} = a_{ji}$.
+		
+		\begin{theorem}
+			The following properties are true for any scalar $\lambda$ and any matrices for which the indicated additions and multiplications are defined.
+			\begin{enumerate}[label=(\alph*)]
+				\item $(A^T)^T = A$
+				\item $(\lambda A)^T = \lambda A^T$
+				\item $(A+B)^T = A^T + B^T$
+				\item $(AB)^T = B^T A^T$
+			\end{enumerate}
+		\end{theorem}
+		
+		\begin{shaded}
+			\begin{proof}
+				\begin{enumerate}[label=(\alph*)]
+					\item Let $A$ be an $m$x$n$ matrix $A=[a_{ij}]$. Then 
+					\begin{align*}
+					(A^T)^T = ([a_{ij}]^T)^T \\
+					= ([a_{ji}])^T \\
+					= [a_{ij}]
+					\end{align*}
+					
+					\item 
+					\begin{align*}
+						(\lambda A)^T = (\lambda [a_{ij}])^T \\
+						= ([\lambda a_{ij}])^T \\
+						= [\lambda a_{ji}] \\
+						= \lambda [a_{ji}] \\
+						= \lambda [a_{ij}]^T \\
+						= \lambda A^T
+					\end{align*}
+					
+					\item
+						\begin{align*}
+							(A+B)^T = ([a_{ij}]+[b_{ij}])^T = ([a_{ij}+b_{ij}])^T = [a_{ji}+b_{ji}] = [a_{ji}]+[b_{ji}] = A^T + B^T
+						\end{align*}
+						
+					\item Note: I'm pretty sure the following is wrong.
+						\begin{align*}
+							(AB)^T = (\sum_{k}a_{ik}b_{kj})^T = \sum_{k}a_{jk}b_{ki} = \sum_{k}a_{kj}^Tb_{ik}^T = \sum_{k}b_{ik}^Ta_{kj}^T = (B^TA^T)
+						\end{align*}
+				\end{enumerate}
+			\end{proof}
+		\end{shaded}
+	
+	A matrix $A$ is \textit{symmetric} if it equals its own transpose; that is, if $A = A^T$. A matrix $A$ is \textit{skew-symmetric} if it equals the negative of its transpose; that is, if $A = -A^T$.
+	
+	A \textit{submatrix} of a matrix $A$ is a matrix obtained by removing any number of rows or columns from $A$. By removing no rows and no columns from $A$, it follows that $A$ is a submatrix of itself.
+	
+	A matrix is \textit{partitioned} if it is divided into submatrices by horizontal or vertical lines between rows and columns.
+	
+	A \textit{zero row} in a matrix is a row containing only zero elements, whereas a nonzero row is a row that contains at least one nonzero element.
+	
+	\begin{defn}
+		A matrix is in \textit{row-reduced form} if it satisfies the following four conditions:
+		\begin{enumerate}
+			\item All zero rows appear below nonzero rows when both types are present in the matrix.
+			\item The first nonzero element in any nonzero row is 1.
+			\item All elements directly below (that is, in the same column but in succeeding rows from) the first nonzero elements of a nonzero row are zero.
+			\item The first nonzero element of any nonzero row appears in a later column (further to the right) than the first nonzero element in any preceding row.
+		\end{enumerate}
+	\end{defn}
+	
+	A \textit{diagonal matrix} is a square matrix having only zeros as non-diagonal elements.
+	
+	An \textit{identity matrix}, denoted by $I$, is a diagonal matrix having all its diagonal elements equal to 1, and 0 otherwise.
+	
+	If $A$ and $I$ are square matrices of the same order, then $AI = IA = A$.
+	
+	A \textit{block diagonal matrix} $A$ is one that can be partitioned into the form
+	
+	$A = \begin{bmatrix}
+	A_{1} & 0 & \dots & 0 \\
+	0 & A_{2} & 0 \dots & 0 \\
+	\vdots & \vdots & \ddots & \vdots \\
+	0  & \dots &\dots & A_{k}
+	\end{bmatrix} $, where $A_1, A_2, ..., A_k$ are square matrices.
+	
+	A matrix $A=[a_{ij}]$ is \textit{upper triangular} if $a_{ij} = 0$ $\forall i>j$; that is, if all elements below the main diagonal are zero.
+	
+	If $a_{ij} = 0$ $\forall i<j$; that is, if all elements above the main diagonal are zero, then $A$ is \textit{lower triangular}.
+	
+	\begin{theorem}
+		The product of two lower (upper) triangular matrices of the same order is also lower (upper) triangular.
+	\end{theorem}
+
+	\begin{shaded*}
+		\begin{proof}
+			Let $A = [a_{ij}] \land B = [b_{ij}]$ both be $n$x$n$ lower triangular matrices. Then
+			
+			$(AB)_{ij} = \sum\limits_{k=1}^{n}a_{ik}b_{kj}$
+			
+			Since $a_{ik} = 0$ $\forall i<j$
+			
+			? \\
+			
+			Since $b_{kj} = 0$ $\forall k<j$
+			
+			?? \\
+		\end{proof}
+	\end{shaded*}
+	\pagebreak
+	
+	\subsection{Linear Systems of Equations}
+	
+	A system of $m$-linear equations in $n$-variables $x_1, x_2, \dots, x_n$ has the general form
 \end{document}
 
